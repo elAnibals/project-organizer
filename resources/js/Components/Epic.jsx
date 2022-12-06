@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { Container, Accordion, ListGroup, Button } from "react-bootstrap";
-import { NormalHistory } from "./Histories";
+import { BacklogHistory } from "./Histories";
 
 const Epic = (props) =>{
     return(
@@ -16,7 +16,7 @@ const Epic = (props) =>{
                 <ListGroup>
                     {props.epic.histories.map((history)=>{
                         return (
-                            <NormalHistory history = {history}/>
+                            <BacklogHistory history ={history}/>
                         );
                     })}
                 </ListGroup>

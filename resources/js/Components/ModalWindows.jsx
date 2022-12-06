@@ -103,7 +103,40 @@ export const MemebersModal = (props) =>{
 
 
 
-
+export const CreateProyectModal = (props) =>{
+    return(
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Crear Proyecto
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Form.Control placeholder="Nombre del Nombre del Proyecto"></Form.Control>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button
+                    variant="outline-danger"
+                >
+                    <i className="bi bi-x"></i>
+                </Button>
+                <Button
+                    variant="outline-success"
+                >
+                    <i className="bi bi-check2"></i>
+                </Button>
+            </Modal.Footer>
+            
+        </Modal>
+    )
+}
 
 
 
@@ -182,4 +215,80 @@ export const HistoryModal = (props) =>{
         </Modal>
     );
 }
+
+
+export const DoneHistoryModal = (props) =>{
+    return(
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Agregar Sprint
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Form.Control placeholder="Nombre del Sprint"></Form.Control>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button
+                    variant="outline-danger"
+                >
+                    <i className="bi bi-x"></i>
+                </Button>
+                <Button
+                    variant="outline-success"
+                >
+                    <i className="bi bi-check2"></i>
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
                
+export const ModifyProjectModal = (props) =>{
+    return(
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Modificar
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form>
+                    <Row>
+                        <Col>
+                            <Form.Control placeholder="Nombre del proyecto"></Form.Control>
+                        </Col>
+                        <Col>
+                            <Form.Control placeholder="url"></Form.Control>
+                        </Col>
+                    </Row>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button
+                    variant="outline-danger"
+                >
+                    <i className="bi bi-x"></i>
+                </Button>
+                <Button
+                    variant="outline-success"
+                >
+                    <i className="bi bi-check2"></i>
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}

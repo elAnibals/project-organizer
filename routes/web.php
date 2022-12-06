@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,7 +20,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -27,9 +29,18 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+*/
 
-Route::get('/prueba/{id}',[ProjectController::class,'getProject']);
 
+Route::redirect('/', '/login');
+
+Route::get('/dashboard',[HomeController::class,'getHome']);
+Route::get('/project/{id}',[ProjectController::class,'getProject']);
+
+//Route::get('/',[LoginController::class,'getLogin']);
+Route::get('/home',[HomeController::class,'getHome'])->name('home');
+
+Route::post('/updateMember/{member_id}',[HomeController::class,'updateMember']);//->name('update.Member');
 
 
 Route::middleware('auth')->group(function () {

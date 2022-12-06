@@ -52,4 +52,12 @@ class ProjectController extends Controller{
             ]
         ]);
     }
+
+    public function updateMember (Request $request ,$id){
+        DB::table('members')
+            ->updateOrInsert(
+            ['id' => $id],
+            ['rol' => $request->rol]
+    );
+    }
 }

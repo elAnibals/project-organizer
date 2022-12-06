@@ -2,16 +2,37 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Badge, Button, Col, Form, ListGroup, Row } from "react-bootstrap";
+import { useForm } from "@inertiajs/inertia-react";
 
 const {useState,useEffect} = React;
-
 const Member = (props) =>{
     let member = props.member;
     const [changing, setChanging]=useState(false);
-    const [rol, setRol]=useState("");
-    const onChange = (evt) =>{
-        
+    const [rol, setRol]=useState(member.rol);
+    const { data, setData, patch, processing, errors, reset } = useForm({
+        rol: '',
+    });
+
+    const [rols, setRols] = useState(["Scrum Master", "Tester", "Product Owner", "Desarrollador"]);
+    const [form, setForm]= useState({});
+
+    const [setField] = (field, value) =>{
+        setForm({
+            ...form,
+            [field]:value
+        })
     }
+
+
+    const onChange = ({evt}) =>{
+        console.log(1);
+    }
+
+    const submit = (e) => {
+        e.preventDefault();
+
+        patch(route('update.Member',member.id));
+    };
 
     const changeRolClick = (evt) =>{
         setChanging(true);
@@ -31,7 +52,10 @@ const Member = (props) =>{
                     <Col>
                         {  changing ?
                             <Form className="d-flex">
-                                <Form.Select>
+                                <Form.Select 
+                                    onChange={onchange}
+                                    as="select"
+                                >
                                     <option>Scrum Master</option>
                                     <option>Product Owner</option>
                                     <option>Tester</option>
@@ -41,6 +65,8 @@ const Member = (props) =>{
                                 <Button 
                                     onClick={aceptRolClick}
                                     variant="outline-success"
+                                    type="submit"
+                                    onSubmit={submit}
                                 >
                                     <i className="bi bi-check2"></i>
                                 </Button >

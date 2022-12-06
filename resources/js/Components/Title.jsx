@@ -2,8 +2,16 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Button } from "react-bootstrap";
+import { ModifyProjectModal } from "./ModalWindows";
+
+
+
                 
+const {useState,useEffect} = React;
+
 const Title = (props) =>{
+
+    const [showModify, setShowModify] = useState(false);
     return(
         <h2>
             {props.title} &nbsp;&nbsp;&nbsp;
@@ -22,10 +30,15 @@ const Title = (props) =>{
             </Button>
             &nbsp;
             <Button
-                variant = "outline-secondary"
+                variant = "outline-warning"
+                onClick={() => setShowModify(true)}
             >
-                <i className="bi bi-gear-fill"></i>
+                <i className="bi bi-pencil"></i>
             </Button>
+            <ModifyProjectModal
+                show={showModify}
+                onHide={()=>setShowModify(false)}
+            />
         </h2>
     );
 }

@@ -11,9 +11,9 @@ const {useState,useEffect} = React;
 
 const Sprint = (props) =>{
     let sprint = props.sprint;
-    const [watingHistories,setWatingHistories] = useState();
-    const [doingHistories,setDoingHistories] = useState();
-    const [doneHistories,setDoneHistories] = useState();
+    const [watingHistories,setWatingHistories] = useState([]);
+    const [doingHistories,setDoingHistories] = useState([]);
+    const [doneHistories,setDoneHistories] = useState([]);
 
     useEffect(()=>{
         let wating = [];
@@ -55,6 +55,9 @@ const Sprint = (props) =>{
             <Row>
                 <Backlog epics={sprint.backlog}/>
                 {/*aqui van las tablas*/}
+                <StatusTable histories = {watingHistories} title="En espera"/>
+                <StatusTable histories = {doingHistories} title="En proceso"/>
+                <DoneTable histories = {doneHistories}/>
             </Row>
         </Container>
     );
